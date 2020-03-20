@@ -4,6 +4,7 @@ import { imageUrl } from "../../firebase/fetchImage";
 import { SearchContext } from "../../context/CountrySearchContext";
 import { FilterContext } from "../../context/FilterSelectionContext";
 import { FilterOptions } from "../FilterOptions";
+import LazyLoad from "react-lazyload";
 
 const axios = require("axios");
 let previousSearch = null;
@@ -101,15 +102,16 @@ function VisaResultGrid() {
       <div className="d-flex justify-content-between row m-4">
         {orginCountry.map(toCountry => (
           <div className="col-sm-6 col-md-4 col-lg-3 countryInfoBox">
-            {console.log("ERROR CHECking; " + toCountry.Country)}
-            <img
-              className="countryImage img-responsive"
-              src={imageUrl[toCountry.Country].url}
-              alt={toCountry.Country}
-            />
+            <LazyLoad offset={5}>
+              <img
+                className="countryImage img-responsive"
+                src={imageUrl[toCountry.Country].url}
+                alt={toCountry.Country}
+              />
 
-            <div className="countryName">{toCountry.Country}</div>
-            <div className="visaStatus">{toCountry.Status}</div>
+              <div className="countryName">{toCountry.Country}</div>
+              <div className="visaStatus">{toCountry.Status}</div>
+            </LazyLoad>
           </div>
         ))}
       </div>
