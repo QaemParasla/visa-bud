@@ -1,0 +1,41 @@
+.countryInfoBox {
+  overflow: hidden;
+  height: 250px;
+  padding-top: 25px;
+}
+
+.countryImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-origin: border-box;
+  border-radius: 5%;
+}
+
+.countryName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 800;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.visaStatus {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background-color: #ff6584;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.container {
+  /* border-style: dashed; */
+}

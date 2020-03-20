@@ -1,0 +1,41 @@
+.btn-secondary {
+  background-color: #6b62fe;
+}
+
+.FilterPanel {
+  background-color: #fcfcfc;
+  width: 50vw;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.btn-outline-dark {
+  background-color: #fff;
+  border-color: #efefef;
+  border-width: 2px;
+}
+
+.btn-outline-dark:hover {
+  background-color: #a8a8a8;
+  color: #fff;
+  border-color: #efefef;
+}
+
+.btn-outline-dark:not(:disabled):not(.disabled):active,
+.btn-outline-dark:not(:disabled):not(.disabled).active,
+.show > .btn-outline-dark.dropdown-toggle {
+  color: #fff;
+  background-color: #a8a8a8;
+  border-color: #fff;
+}
+
+.btn-outline-dark:not(:disabled):not(.disabled):active:focus,
+.btn-outline-dark:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-dark.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.btn-outline-dark:focus,
+.btn-outline-dark.focus {
+  box-shadow: none;
+}

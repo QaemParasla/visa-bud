@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.68c69ea4.chunk.css",
+    "main.js": "/static/js/main.cbced0f9.chunk.js",
+    "main.js.map": "/static/js/main.cbced0f9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0c2e4ecf.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0c2e4ecf.js.map",
+    "static/css/2.67123b20.chunk.css": "/static/css/2.67123b20.chunk.css",
+    "static/js/2.a27e29ff.chunk.js": "/static/js/2.a27e29ff.chunk.js",
+    "static/js/2.a27e29ff.chunk.js.map": "/static/js/2.a27e29ff.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.10b7f65ee6cda05d62dfd69db264db35.js": "/precache-manifest.10b7f65ee6cda05d62dfd69db264db35.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.68c69ea4.chunk.css.map": "/static/css/main.68c69ea4.chunk.css.map",
+    "static/js/2.a27e29ff.chunk.js.LICENSE.txt": "/static/js/2.a27e29ff.chunk.js.LICENSE.txt",
+    "static/media/visa_landing_image.png": "/static/media/visa_landing_image.0112d153.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c2e4ecf.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.a27e29ff.chunk.js",
+    "static/css/main.68c69ea4.chunk.css",
+    "static/js/main.cbced0f9.chunk.js"
+  ]
+}
