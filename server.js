@@ -3,13 +3,13 @@ const errorMiddleware = require("./middleware");
 const routes = require("./routes/api/countryList");
 const db = require("./databaseHandler");
 var cors = require("cors");
+var path = require("path");
 
 const app = express(express.json());
 
 db.connectToDatabase();
 
 app.use(express.static(path.join(__dirname, "frontend/build")));
-app.use("/api", routes);
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
