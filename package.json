@@ -7,6 +7,10 @@
     "start": "node server.js",
     "dev": "nodemon -r dotenv/config server.js"
   },
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.4"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
