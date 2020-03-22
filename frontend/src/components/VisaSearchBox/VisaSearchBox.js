@@ -5,6 +5,7 @@ import "./VisaSearchBox.css";
 const axios = require("axios");
 let country = [];
 let userInput = "";
+let showSuggestionBox = "searchResultBoxNotVisible";
 
 axios
   .get("api/countrylist")
@@ -35,6 +36,7 @@ const VisaSearchBox = () => {
           }}
           value={userInput}
         />
+
         {suggestions && (
           <div className="searchResultBox">
             {suggestions.map(country => (
@@ -66,11 +68,13 @@ const VisaSearchBox = () => {
   }
 
   function getSuggestions(event) {
-    const val = event.target.value;
-    userInput = val;
+    let val = event.target.value.toLowerCase();
+    userInput = event.target.value;
     if (val === "") {
+      showSuggestionBox = "searchResultBoxNotVisible";
       setSuggestions([]);
     } else {
+      showSuggestionBox = "searchResultBox";
       const pattern = `[A-Za-z.\s]*${val}[A-Za-z.\s]*`;
       const matchRegex = new RegExp(pattern);
       setSuggestions(

@@ -3,8 +3,9 @@
 }
 
 .searchResultBox {
-  border: 20px;
-  background-color: floralwhite;
+  overflow: auto;
+  height: 200px;
+  scrollbar-color: #6c58cc #f2edeb;
 }
 
 .searchResultBox > div {
@@ -12,6 +13,7 @@
   font-weight: 300;
   font-size: 0.9rem;
   border-top: 1px solid #a6acec;
+  background-color: white;
 }
 
 .searchResultBox > div:hover {
