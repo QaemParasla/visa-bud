@@ -3,14 +3,6 @@ import { UncontrolledCollapse } from "reactstrap";
 import { FilterContext } from "../../context/FilterSelectionContext";
 import "./FilterOptions.css";
 
-// let isVisaFreeBtnSelected = "active";
-// let isVisaOnArrivalBtnSelected = "inactive";
-
-// const FilterOptions = {
-//   VISA_FREE: "Visa Free",
-//   VISA_ON_ARRIVAL: "Visa on Arrival"
-// };
-
 let FilterOptions = {
   changed: false,
   visa_free: {
@@ -24,12 +16,10 @@ let FilterOptions = {
 };
 
 function Filter() {
-  console.log("AM I CALLED 2>>");
   const [filter, setFilter] = useContext(FilterContext);
   const [filterToggle, setFlterToggle] = useState(false);
 
   function ApplyFilter(filter) {
-    console.log("AM I CALLED 3>>");
     /// console.log("filter: " + JSON.stringify(FilterOptions));
     switch (filter) {
       case FilterOptions.visa_free.name: {
@@ -63,12 +53,11 @@ function Filter() {
   }
   return (
     <div className="ml-4 mt-5">
-      {console.log("AM I CALLED 4>>")}
       <button type="button" className="btn btn-secondary" id="toggler">
         Add Filter:
       </button>
       <UncontrolledCollapse toggler="#toggler">
-        <div className="FilterPanel">
+        <div className="FilterPanel container-small">
           <div className="ml-2 mt-2 pt-2">Visa Preferences</div>
           <button
             type="button"

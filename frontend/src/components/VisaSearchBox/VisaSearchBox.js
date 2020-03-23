@@ -5,7 +5,7 @@ import "./VisaSearchBox.css";
 const axios = require("axios");
 let country = [];
 let userInput = "";
-let showSuggestionBox = "searchResultBoxNotVisible";
+let isSuggestionBoxActive = "suggestionBoxInActive";
 
 axios
   .get("api/countrylist")
@@ -38,11 +38,9 @@ const VisaSearchBox = () => {
         />
 
         {suggestions && (
-          <div className="searchResultBox">
+          <div className={`suggestionBox ${isSuggestionBoxActive}`}>
             {suggestions.map(country => (
-              <div onClick={() => suggestionSelectedCleanup(country)}>
-                {country}
-              </div>
+              <div onClick={() => suggestionSelected(country)}>{country}</div>
             ))}
           </div>
         )}
@@ -50,8 +48,9 @@ const VisaSearchBox = () => {
     </>
   );
 
-  function suggestionSelectedCleanup(country) {
+  function suggestionSelected(country) {
     userInput = country;
+    isSuggestionBoxActive = "suggestionBoxInActive";
     setSuggestions([]);
     setSearch(country);
   }
@@ -59,7 +58,6 @@ const VisaSearchBox = () => {
   function checkSubmit(event) {
     if (event.key === "Enter") {
       console.log("YAAAAAAA ENTER PRESSED");
-      setSearch(event.target.value);
     } else if (event.key === "ArrowUp") {
       console.log("YAAAAAAA Up PRESSED");
     } else if (event.key === "ArrowDown") {
@@ -68,14 +66,13 @@ const VisaSearchBox = () => {
   }
 
   function getSuggestions(event) {
-    let val = event.target.value.toLowerCase();
     userInput = event.target.value;
-    if (val === "") {
-      showSuggestionBox = "searchResultBoxNotVisible";
+    if (userInput === "") {
+      isSuggestionBoxActive = "suggestionBoxInActive";
       setSuggestions([]);
     } else {
-      showSuggestionBox = "searchResultBox";
-      const pattern = `[A-Za-z.\s]*${val}[A-Za-z.\s]*`;
+      isSuggestionBoxActive = "suggestionBoxActive";
+      const pattern = `[A-Za-z.\s]*${userInput.toLowerCase()}[A-Za-z.\s]*`;
       const matchRegex = new RegExp(pattern);
       setSuggestions(
         country.filter(item => matchRegex.test(item.toLowerCase()))

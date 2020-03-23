@@ -2,13 +2,21 @@
   font-weight: 200;
 }
 
-.searchResultBox {
-  overflow: auto;
+/* Search Box Scrollbar Style*/
+.suggestionBoxActive {
   height: 200px;
+}
+
+.suggestionBoxInActive {
+  height: 0px;
+}
+
+.suggestionBox {
+  overflow: auto;
   scrollbar-color: #6c58cc #f2edeb;
 }
 
-.searchResultBox > div {
+.suggestionBox > div {
   padding: 5px;
   font-weight: 300;
   font-size: 0.9rem;
@@ -16,7 +24,7 @@
   background-color: white;
 }
 
-.searchResultBox > div:hover {
+.suggestionBox > div:hover {
   background-color: #6c58cc;
   cursor: pointer;
 }

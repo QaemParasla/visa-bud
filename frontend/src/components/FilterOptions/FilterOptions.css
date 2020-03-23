@@ -1,10 +1,17 @@
+/* Add Filter Button Style*/
 .btn-secondary {
   background-color: #6b62fe;
 }
 
+.btn-secondary:focus,
+.btn-secondary.focus {
+  background-color: #6b62fe;
+}
+
+/* Add Filter Button Style*/
 .FilterPanel {
   background-color: #fcfcfc;
-  width: 50vw;
+
   border-radius: 5px;
   font-size: 0.8rem;
 }
@@ -38,4 +45,24 @@
 .btn-outline-dark:focus,
 .btn-outline-dark.focus {
   box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .container-small {
+    width: 500px;
+  }
+}
+@media (min-width: 992px) {
+  .container-small {
+    width: 500px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-small {
+    width: 500px;
+  }
+}
+
+.container-small {
+  max-width: 100%;
 }
