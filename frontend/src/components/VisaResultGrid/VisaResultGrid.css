@@ -1,7 +1,8 @@
 .countryInfoBox {
   overflow: hidden;
   height: 250px;
-  padding-top: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .countryImage {

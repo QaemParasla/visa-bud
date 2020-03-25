@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./VisaResultGrid.css";
+import LazyLoad from "react-lazyload";
 import { imageUrl } from "../../firebase/fetchImage";
 import { SearchContext } from "../../context/CountrySearchContext";
 import { FilterContext } from "../../context/FilterSelectionContext";
 import { FilterOptions } from "../FilterOptions";
-import LazyLoad from "react-lazyload";
+import "./VisaResultGrid.css";
 
 const axios = require("axios");
 let previousSearch = null;
@@ -34,10 +34,11 @@ function VisaResultGrid() {
 
       // if (filterOption === null) {
       orginCountryCopy = result.data[0].ToCountry;
-      setOrginCountry(result.data[0].ToCountry);
+      //setOrginCountry(result.data[0].ToCountry);
       //  } else {
       //    applyFilters(result.data[0].ToCountry);
       //  }
+      ApplyFilter();
     };
 
     if (search !== "") {
@@ -82,6 +83,8 @@ function VisaResultGrid() {
         return e.StatusColor === "Blue";
       });
       setOrginCountry(cop);
+    } else {
+      setOrginCountry(orginCountryCopy);
     }
   }
 
@@ -93,7 +96,9 @@ function VisaResultGrid() {
       {previousSearch && (
         <div className="m-4">
           <FilterOptions></FilterOptions>
-          <div className="ml-4 mt-2">Showing {} Amazing Countries Below:</div>
+          <div className="ml-4 mt-2">
+            Showing {orginCountry.length} Amazing Countries Below:
+          </div>
         </div>
       )}
       {/* Calling Filter Component  */}
