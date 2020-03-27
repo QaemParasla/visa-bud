@@ -15,21 +15,19 @@ let FilterOptions = {
   }
 };
 
+let TravelPreference = [];
+
 function Filter() {
   const [filter, setFilter] = useContext(FilterContext);
   const [filterToggle, setFlterToggle] = useState(false);
 
   function ApplyFilter(filter) {
-    /// console.log("filter: " + JSON.stringify(FilterOptions));
     switch (filter) {
       case FilterOptions.visa_free.name: {
         if (FilterOptions.visa_free.isActive === "active") {
-          // console.log("check visa fre to inactive");
           FilterOptions.visa_free.isActive = "inactive";
-          //  console.log("filter2: " + JSON.stringify(FilterOptions));
           setFilter({ filterType: "visa free", status: "inactive" });
         } else {
-          // console.log("check visa free to active");
           FilterOptions.visa_free.isActive = "active";
           setFilter({ filterType: "visa free", status: "active" });
         }
@@ -38,11 +36,9 @@ function Filter() {
       }
       case FilterOptions.visa_on_arrival.name: {
         if (FilterOptions.visa_on_arrival.isActive === "active") {
-          // console.log("check visa on arrival to inactive");
           FilterOptions.visa_on_arrival.isActive = "inactive";
           setFilter({ filterType: "visa on arrival", status: "inactive" });
         } else {
-          // console.log("check visa on arrival to active");
           FilterOptions.visa_on_arrival.isActive = "active";
           setFilter({ filterType: "visa on arrival", status: "active" });
         }
@@ -52,37 +48,42 @@ function Filter() {
     }
   }
   return (
-    <div className="ml-4 mt-5">
-      <button type="button" className="btn btn-secondary" id="toggler">
-        Add Filter:
+    <>
+      {console.log("Rendering Filter Options")}
+      <button type="button" className="btn btn-secondary ml-4" id="toggler">
+        Add Filters
       </button>
+
       <UncontrolledCollapse toggler="#toggler">
-        <div className="FilterPanel container-small">
-          <div className="ml-2 mt-2 pt-2">Visa Preferences</div>
-          <button
-            type="button"
-            className={`btn btn-outline-dark ml-2 mt-2 ${FilterOptions.visa_free.isActive}`}
-            onClick={() => ApplyFilter(FilterOptions.visa_free.name)}
-          >
-            Visa Free
-          </button>
-          <button
-            type="button"
-            class={`btn btn-outline-dark ml-2 mt-2  ${FilterOptions.visa_on_arrival.isActive}`}
-            onClick={() => ApplyFilter(FilterOptions.visa_on_arrival.name)}
-          >
-            Visa on Arrival
-          </button>
-          <div className="ml-2 mt-2 pt-2">Travel Preferences</div>
-          <button type="button" className={`btn btn-outline-dark ml-2 mt-2`}>
-            English Speaking
-          </button>
-          <button type="button" class={`btn btn-outline-dark ml-2 mt-2  `}>
-            Party Hub
-          </button>
+        <div className="container-fluid filter-panel">
+          <div className="filter-options">
+            <div className="filter-options-label"> Visa Preferences </div>
+
+            <button
+              type="button"
+              className={`btn btn-outline-dark ml-2 mt-2 ${FilterOptions.visa_free.isActive}`}
+              onClick={() => ApplyFilter(FilterOptions.visa_free.name)}
+            >
+              🛂 Visa Free
+            </button>
+            <button
+              type="button"
+              class={`btn btn-outline-dark ml-2 mt-2  ${FilterOptions.visa_on_arrival.isActive}`}
+              onClick={() => ApplyFilter(FilterOptions.visa_on_arrival.name)}
+            >
+              🛂 Visa on Arrival
+            </button>
+            <div className="ml-2 mt-2 pt-2">Travel Preferences</div>
+            <button type="button" className={`btn btn-outline-dark ml-2 mt-2`}>
+              💬 English Speaking
+            </button>
+            <button type="button" class={`btn btn-outline-dark ml-2 mt-2  `}>
+              👮 ‍Safe
+            </button>
+          </div>
         </div>
       </UncontrolledCollapse>
-    </div>
+    </>
   );
 }
 export default Filter;

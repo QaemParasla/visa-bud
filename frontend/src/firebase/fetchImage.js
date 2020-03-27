@@ -2,7 +2,6 @@ const axios = require("axios");
 
 let imageUrl = "hello";
 
-console.log("Fetching image URL");
 const fetchData = async () => {
   const result = await axios("api/countryImageURL");
 

@@ -6,8 +6,11 @@ export const FilterProvider = props => {
   const [filter, setFilter] = useState({});
 
   return (
-    <FilterContext.Provider value={[filter, setFilter]}>
-      {props.children}
-    </FilterContext.Provider>
+    <>
+      {console.log("Rendering FilterSelectContext")}
+      <FilterContext.Provider value={[filter, setFilter]}>
+        {props.children}
+      </FilterContext.Provider>
+    </>
   );
 };

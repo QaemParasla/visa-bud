@@ -26,18 +26,18 @@ function VisaResultGrid() {
   const [search] = useContext(SearchContext);
   const [filter, setFilter] = useContext(FilterContext);
   const [orginCountry, setOrginCountry] = useState([]);
+  const [visaFree, setVisaFree] = useState([]);
+  const [visaOnArrival, setVisaOnArrival] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect called in VisaResultGrid");
+    {
+      console.log("UseEffect VisaResultGrid (Search)");
+    }
     const fetchData = async () => {
       const result = await axios(`api/countryVisaStatusList/${search}`);
 
-      // if (filterOption === null) {
       orginCountryCopy = result.data[0].ToCountry;
-      //setOrginCountry(result.data[0].ToCountry);
-      //  } else {
-      //    applyFilters(result.data[0].ToCountry);
-      //  }
+
       ApplyFilter();
     };
 
@@ -48,41 +48,36 @@ function VisaResultGrid() {
   }, [search]);
 
   useEffect(() => {
-    //  console.log("usereffect start" + JSON.stringify(FilterOption));
+    {
+      console.log("UseEffect VisaResultGrip (Filter)");
+    }
     if (filter.filterType === "visa free") {
       FilterOption.visa_free.isActive = filter.status;
     } else if (filter.filterType === "visa on arrival") {
       FilterOption.visa_on_arrival.isActive = filter.status;
     }
-    //   console.log("usereffect end" + JSON.stringify(FilterOption));
 
     if (search !== "") {
-      //  console.log("copy " + JSON.stringify(orginCountryCopy));
       ApplyFilter();
     }
   }, [filter]);
 
   function ApplyFilter() {
-    //console.log(JSON.stringify(FilterOption));
-
     if (
       FilterOption.visa_free.isActive === "active" &&
       FilterOption.visa_on_arrival.isActive === "active"
     ) {
-      console.log("visa free and visa on arrival");
       setOrginCountry(orginCountryCopy);
     } else if (FilterOption.visa_free.isActive === "active") {
-      console.log("visa free ");
-      let cop = orginCountryCopy.filter(function(e) {
+      let data = orginCountryCopy.filter(function(e) {
         return e.StatusColor === "Green";
       });
-      setOrginCountry(cop);
+      setOrginCountry(data);
     } else if (FilterOption.visa_on_arrival.isActive === "active") {
-      console.log(" visa on arrival");
-      let cop = orginCountryCopy.filter(function(e) {
+      let data = orginCountryCopy.filter(function(e) {
         return e.StatusColor === "Blue";
       });
-      setOrginCountry(cop);
+      setOrginCountry(data);
     } else {
       setOrginCountry(orginCountryCopy);
     }
@@ -90,7 +85,8 @@ function VisaResultGrid() {
 
   return (
     <>
-      {console.log("rendering VisaResultGrid: " + search)}
+      {/* Fillter and Map Controls */}
+      {console.log("Rendering VisaResultGrip")}
       {/* {<FilterOptions></FilterOptions>} */}
       {/* Calling Filter Component  */}
       {previousSearch && (
@@ -102,12 +98,12 @@ function VisaResultGrid() {
         </div>
       )}
       {/* Calling Filter Component  */}
-
       {/* Result Grid Component  */}
       <div className="d-flex justify-content-between row m-4">
         {orginCountry.map(toCountry => (
           <div className="col-sm-6 col-md-4 col-lg-3 countryInfoBox">
             <LazyLoad offset={5}>
+              {console.log(toCountry.Country)}
               <img
                 className="countryImage img-responsive"
                 src={imageUrl[toCountry.Country].url}
@@ -120,7 +116,6 @@ function VisaResultGrid() {
           </div>
         ))}
       </div>
-
       {/* Result Grid Component  */}
     </>
   );

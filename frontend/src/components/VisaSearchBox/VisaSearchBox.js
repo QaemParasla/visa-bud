@@ -22,7 +22,7 @@ const VisaSearchBox = () => {
 
   return (
     <>
-      {console.log("rendering VisaSearchBox: " + search)}
+      {console.log("Rendering Visa SearchBox")}
       <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-4 text-center form">
         <input
           className="header-search form-control form-control-lg"
@@ -57,11 +57,11 @@ const VisaSearchBox = () => {
 
   function checkSubmit(event) {
     if (event.key === "Enter") {
-      console.log("YAAAAAAA ENTER PRESSED");
+      //console.log("YAAAAAAA ENTER PRESSED");
     } else if (event.key === "ArrowUp") {
-      console.log("YAAAAAAA Up PRESSED");
+      // console.log("YAAAAAAA Up PRESSED");
     } else if (event.key === "ArrowDown") {
-      console.log("YAAAAAAA Down PRESSED");
+      // console.log("YAAAAAAA Down PRESSED");
     }
   }
 

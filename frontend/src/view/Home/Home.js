@@ -33,6 +33,7 @@ function Home() {
 
   return (
     <>
+      {console.log("Rendering Home Page View")}
       {landingPageImage()}
       {landingPageMainText()}
       <SearchProvider>

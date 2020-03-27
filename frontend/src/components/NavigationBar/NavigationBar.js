@@ -16,6 +16,7 @@ const NavigationBar = props => {
 
   return (
     <div>
+      {console.log("Rendering NavBar")}
       <Navbar light expand="md">
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
