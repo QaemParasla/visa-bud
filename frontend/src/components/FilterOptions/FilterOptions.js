@@ -1,77 +1,98 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { UncontrolledCollapse } from "reactstrap";
 import { FilterContext } from "../../context/FilterSelectionContext";
 import "./FilterOptions.css";
 
-let FilterOptions = {
-  changed: false,
-  visa_free: {
-    name: "visa free",
-    isActive: "active"
-  },
-  visa_on_arrival: {
-    name: "visa on arrival",
-    isActive: "inactive"
-  }
-};
-
-let TravelPreference = [];
-
 function Filter() {
   const [filter, setFilter] = useContext(FilterContext);
-  const [filterToggle, setFlterToggle] = useState(false);
 
-  function ApplyFilter(filter) {
-    switch (filter) {
-      case FilterOptions.visa_free.name: {
-        if (FilterOptions.visa_free.isActive === "active") {
-          FilterOptions.visa_free.isActive = "inactive";
-          setFilter({ filterType: "visa free", status: "inactive" });
+  function ApplyFilter(filterSelected) {
+    switch (filterSelected) {
+      case "VISA_FREE": {
+        if (filter.VISA_FREE === "active") {
+          setFilter({ type: "VISA_FREE", payload: "inActive" });
         } else {
-          FilterOptions.visa_free.isActive = "active";
-          setFilter({ filterType: "visa free", status: "active" });
+          setFilter({ type: "VISA_FREE", payload: "active" });
         }
-        setFlterToggle(!filterToggle);
         break;
       }
-      case FilterOptions.visa_on_arrival.name: {
-        if (FilterOptions.visa_on_arrival.isActive === "active") {
-          FilterOptions.visa_on_arrival.isActive = "inactive";
-          setFilter({ filterType: "visa on arrival", status: "inactive" });
+      case "VISA_ON_ARRIVAL_AND_EVISA": {
+        if (filter.VISA_ON_ARRIVAL_AND_EVISA === "active") {
+          setFilter({ type: "VISA_ON_ARRIVAL_AND_EVISA", payload: "inActive" });
         } else {
-          FilterOptions.visa_on_arrival.isActive = "active";
-          setFilter({ filterType: "visa on arrival", status: "active" });
+          setFilter({ type: "VISA_ON_ARRIVAL_AND_EVISA", payload: "active" });
         }
-        setFlterToggle(!filterToggle);
+        break;
+      }
+      case "EVISA": {
+        if (filter.EVISA === "active") {
+          setFilter({ type: "EVISA", payload: "inActive" });
+        } else {
+          setFilter({ type: "EVISA", payload: "active" });
+        }
+        break;
+      }
+      case "ETA": {
+        if (filter.ETA === "active") {
+          setFilter({ type: "ETA", payload: "inActive" });
+        } else {
+          setFilter({ type: "ETA", payload: "active" });
+        }
         break;
       }
     }
   }
+
   return (
     <>
       {console.log("Rendering Filter Options")}
+      {console.log("Visa Free" + filter.VISA_FREE)}
+      {console.log(
+        "VISA_ON_ARRIVAL_AND_EVISA" + filter.VISA_ON_ARRIVAL_AND_EVISA
+      )}
+      {console.log("EVISA" + filter.EVISA)}
+      {console.log("ETA" + filter.ETA)}
+
+      {/* <button type="button" className="btn btn-secondary ml-4" id="toggler">
+        Add Filters
+      </button> */}
+
+      {/* {search && (
+        <> */}
       <button type="button" className="btn btn-secondary ml-4" id="toggler">
         Add Filters
       </button>
-
       <UncontrolledCollapse toggler="#toggler">
         <div className="container-fluid filter-panel">
           <div className="filter-options">
             <div className="filter-options-label"> Visa Preferences </div>
-
             <button
               type="button"
-              className={`btn btn-outline-dark ml-2 mt-2 ${FilterOptions.visa_free.isActive}`}
-              onClick={() => ApplyFilter(FilterOptions.visa_free.name)}
+              className={`btn btn-outline-dark ml-2 mt-2 ${filter.VISA_FREE}`}
+              onClick={() => ApplyFilter("VISA_FREE")}
             >
               🛂 Visa Free
             </button>
             <button
               type="button"
-              class={`btn btn-outline-dark ml-2 mt-2  ${FilterOptions.visa_on_arrival.isActive}`}
-              onClick={() => ApplyFilter(FilterOptions.visa_on_arrival.name)}
+              class={`btn btn-outline-dark ml-2 mt-2  ${filter.VISA_ON_ARRIVAL_AND_EVISA}`}
+              onClick={() => ApplyFilter("VISA_ON_ARRIVAL_AND_EVISA")}
             >
-              🛂 Visa on Arrival
+              🛂 Visa on Arrival and eVisa
+            </button>
+            <button
+              type="button"
+              class={`btn btn-outline-dark ml-2 mt-2  ${filter.EVISA}`}
+              onClick={() => ApplyFilter("EVISA")}
+            >
+              🛂 eVisa
+            </button>
+            <button
+              type="button"
+              class={`btn btn-outline-dark ml-2 mt-2  ${filter.ETA}`}
+              onClick={() => ApplyFilter("ETA")}
+            >
+              🛂 eTA
             </button>
             <div className="ml-2 mt-2 pt-2">Travel Preferences</div>
             <button type="button" className={`btn btn-outline-dark ml-2 mt-2`}>
@@ -83,6 +104,8 @@ function Filter() {
           </div>
         </div>
       </UncontrolledCollapse>
+      {/* </>
+      )} */}
     </>
   );
 }

@@ -11,7 +11,7 @@
   background-size: cover;
   background-position: center;
   background-origin: border-box;
-  border-radius: 5%;
+  border-radius: 4px;
 }
 
 .countryName {
@@ -20,21 +20,33 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.7rem;
   text-align: center;
 }
 
 .visaStatus {
   position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -20%);
-  background-color: #ff6584;
+  bottom: 0;
+  left: 0;
   font-weight: 800;
   font-size: 0.8rem;
   text-align: center;
-  border-radius: 5%;
+  border-radius: 2px;
+  padding: 2px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  color: white;
+  background-color: #cccbe682;
+}
+
+.result-count {
+  background-color: white;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px sold #efefef;
+  padding: 5px;
+  cursor: pointer;
 }
 
 /* .container-fluid {

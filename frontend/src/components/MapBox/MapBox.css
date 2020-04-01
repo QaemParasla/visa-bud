@@ -1,0 +1,25 @@
+.map-panel {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: #aba6ff;
+  z-index: 1;
+}
+
+.map-close {
+  position: absolute;
+  z-index: 1;
+}
+
+.btn-close:hover {
+  background-color: #ff4742;
+  color: #ff4742;
+  border-color: #ff4742;
+}
+
+.custome-map {
+  width: 100%;
+  height: 100%;
+}

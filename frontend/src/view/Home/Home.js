@@ -5,6 +5,7 @@ import { VisaSearchBox } from "../../components/VisaSearchBox";
 import { VisaResultGrid } from "../../components/VisaResultGrid";
 import { SearchProvider } from "../../context/CountrySearchContext";
 import { FilterProvider } from "../../context/FilterSelectionContext";
+import { FilterOptions } from "../../components/FilterOptions";
 
 function Home() {
   function landingPageImage() {
