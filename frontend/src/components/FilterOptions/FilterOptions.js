@@ -59,7 +59,7 @@ function Filter() {
 
       {/* {search && (
         <> */}
-      <button type="button" className="btn btn-secondary ml-4" id="toggler">
+      <button type="button" className="btn btn-secondary" id="toggler">
         Add Filters
       </button>
       <UncontrolledCollapse toggler="#toggler">
@@ -100,6 +100,11 @@ function Filter() {
             </button>
             <button type="button" class={`btn btn-outline-dark ml-2 mt-2  `}>
               👮 ‍Safe
+            </button>
+          </div>
+          <div className="close-filterpanel-button">
+            <button type="button" className="btn btn-secondary">
+              Close Button
             </button>
           </div>
         </div>

@@ -43,7 +43,7 @@
 /* Center Opening Filter Panel */
 .filter-panel {
   position: fixed;
-  height: 100vh;
+  height: 90vh;
   width: 430px;
   overflow-y: scroll;
   background-color: #ffffff;
@@ -66,6 +66,11 @@
   font-size: 0.9rem;
   font-weight: 700;
   padding: 5px;
+}
+
+.close-filterpanel-button {
+  
+  background-color: tomato;
 }
 
 /* Add Filter Button Style*/
@@ -97,3 +102,9 @@
 }
 
 */
+
+@media only screen and (max-width: 768px) {
+  .filter-panel {
+    width: 100vw;
+  }
+}

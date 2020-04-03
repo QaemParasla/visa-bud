@@ -1,41 +1,42 @@
 import React, { useEffect, useRef, useState } from "react";
-import { UncontrolledCollapse } from "reactstrap";
+import { Collapse } from "reactstrap";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./MapBox.css";
 
 const MapBox = props => {
-  console.log("RENDING MAP TOP SIDE");
-  const [mapInstance, setMapInstance] = useState(null);
-  const mapboxContainer = useRef(null);
+  console.log("Mapbox - top ");
+  const [map, setMap] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const mapBoxContainer = useRef(null);
 
   useEffect(() => {
-    console.log("UseEffect MapBox");
-
+    console.log("Called in napboxglMAP useefffect");
     mapboxgl.accessToken =
       "pk.eyJ1IjoicWFlbXBhcmFzbGEiLCJhIjoiY2s4NTVkaWNqMDNleDNvcGZiOGpxMGZ1ayJ9.-QSENqDh_QAGgTkoasl2ww";
     const initializeMap = () => {
-      console.log("Initializing map ");
+      console.log("Mapbox - Initializing  ");
       const map = new mapboxgl.Map({
-        container: mapboxContainer.current,
-        style: "mapbox://styles/qaemparasla/ck85d8xug01va1iw2wa9hdgg6",
+        container: mapBoxContainer.current,
+        style: "mapbox://styles/qaemparasla/ck85d8xug01va1iw2wa9hdgg6", // stylesheet location
         center: [0, 0],
         zoom: 2
       });
 
       map.on("load", () => {
+        console.log("Mapbox - on Load");
         map.addControl(new mapboxgl.NavigationControl());
+        setMap(map);
         map.resize();
-        setMapInstance(map);
       });
     };
 
-    if (!mapInstance) initializeMap();
-  }, [mapInstance]);
+    if (!map) initializeMap();
+  }, [map]);
 
-  function paintMap() {
+  function paintMapBox() {
     console.log("Mapbox - PaintMap");
-    if (mapInstance) {
+    if (map) {
       let green = props.data.VISA_FREE;
       let blue = props.data.VISA_ON_ARRIVAL_AND_EVISA;
       let gold = props.data.ETA;
@@ -54,47 +55,69 @@ const MapBox = props => {
         yellow = ["yellow"];
       }
 
-      mapInstance.setPaintProperty(
-        "ne-10m-admin-0-countries-2wu9ko",
-        "fill-color",
-        [
-          "match",
-          ["get", "SOVEREIGNT"],
-          green,
-          "#23cf6b",
-          blue,
-          "#6b62fe",
-          gold,
-          "#daa520",
-          yellow,
-          "#ffff00",
-          "hsl(0, 3%, 99%)"
-        ]
-      );
+      map.setPaintProperty("ne-10m-admin-0-countries-2wu9ko", "fill-color", [
+        "match",
+        ["get", "SOVEREIGNT"],
+        green,
+        "#9acd32",
+        blue,
+        "#72c7fa",
+        gold,
+        "#e6b31e",
+        yellow,
+        "#ffff00",
+        "hsl(0, 3%, 99%)"
+      ]);
     }
   }
 
+  function toggleMapBox() {
+    console.log("Mapbox - toggleMapBox");
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <>
-      {console.log("Rendering MapBox")}
-      {paintMap()}
-      <button type="button" className="btn btn-secondary ml-4" id="map-toggler">
-        🌏 Map
+    <div>
+      {console.log("Mapbox  - Rendeering ")}
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={() => toggleMapBox()}
+      >
+        🌎 Open Map
       </button>
 
-      <UncontrolledCollapse toggler="#map-toggler">
-        <div className=" map-panel">
+      <Collapse isOpen={isOpen}>
+        <div ref={mapBoxContainer} className="mapbox-fullscreen">
           <button
             type="button"
-            className="btn btn-secondary map-close m-2"
-            id="map-toggler"
+            className="btn btn-secondary mapbox-close-button m-2"
+            onClick={() => toggleMapBox()}
           >
-            🌏 Close Map
+            🌎 Close Map
           </button>
-          <div ref={mapboxContainer} className="custome-map"></div>
+          <div className="col mapbox-legend-panel">
+            <div className="row">
+              <div className="mapbox_legend_color green"></div>
+              <div className="mapbox-legend-name">Visa Free</div>
+            </div>
+            <div className="row">
+              <div className="mapbox_legend_color blue"></div>
+              <div className="mapbox-legend-name">Visa on Arrival / eVisa</div>
+            </div>
+            <div className="row">
+              <div className="mapbox_legend_color gold"></div>
+              <div className="mapbox-legend-name">eTA</div>
+            </div>
+            <div className="row">
+              <div className="mapbox_legend_color yellow"></div>
+              <div className="mapbox-legend-name">eVisa</div>
+            </div>
+          </div>
         </div>
-      </UncontrolledCollapse>
-    </>
+        {paintMapBox()}
+      </Collapse>
+    </div>
   );
 };
 

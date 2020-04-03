@@ -109,12 +109,12 @@ function VisaResultGrid() {
       {console.log("SEARCH: " + search)}
       {search && (
         <>
-          <div className="filter-action-panel mt-5 ml-3">
-            {<FilterOptions></FilterOptions>}
-            {<MapBox data={mapboxData}></MapBox>}
+          <div className="filter-action-panel row mx-0 my-3 m-md-3">
+            <div className="ml-3">{<FilterOptions></FilterOptions>}</div>
+            <div className="ml-3">{<MapBox data={mapboxData}></MapBox>}</div>
           </div>
-          <div className="active-filter-panel ml-3 mt-3">
-            <div className="result-count ml-4">
+          <div className="active-filter-panel mx-0 my-3 m-md-3">
+            <div className="result-count ml-3">
               🌇 {orginCountry.length} Amazing Countries
             </div>
           </div>
@@ -122,7 +122,7 @@ function VisaResultGrid() {
       )}
       {/* Calling Filter Component  */}
       {/* Result Grid Component  */}
-      <div className="d-flex justify-content-between row m-4">
+      <div className="d-flex justify-content-between row mx-0 my-3 m-md-3">
         {orginCountry.map(toCountry => (
           <div className="col-xm-6  col-sm-6 col-md-4 col-lg-3 countryInfoBox">
             <LazyLoad offset={5}>
