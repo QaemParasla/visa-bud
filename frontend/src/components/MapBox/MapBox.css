@@ -5,7 +5,17 @@
   bottom: 0;
   width: 100%;
   height: 96%;
+  font-size: 12px;
+}
+
+.mapbox-hide {
+  z-index: -1;
+  left: -1000px;
+}
+
+.mapbox-show {
   z-index: 1;
+  left: 0px;
 }
 
 .mapbox-close-button {
@@ -26,7 +36,7 @@
 }
 
 .mapbox-legend-name {
-  padding: 4px;
+  padding: 5px;
 }
 
 .mapbox_legend_color {

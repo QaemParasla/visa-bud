@@ -4,6 +4,8 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./MapBox.css";
 
+let mapboxshowhide = "mapbox-hide";
+
 const MapBox = props => {
   console.log("Mapbox - top ");
   const [map, setMap] = useState(null);
@@ -71,8 +73,9 @@ const MapBox = props => {
     }
   }
 
-  function toggleMapBox() {
+  function toggleMapBox(st) {
     console.log("Mapbox - toggleMapBox");
+    mapboxshowhide = st;
     setIsOpen(!isOpen);
   }
 
@@ -82,41 +85,41 @@ const MapBox = props => {
       <button
         type="button"
         className="btn btn-secondary"
-        onClick={() => toggleMapBox()}
+        onClick={() => toggleMapBox("mapbox-show")}
       >
         🌎 Open Map
       </button>
-
-      <Collapse isOpen={isOpen}>
-        <div ref={mapBoxContainer} className="mapbox-fullscreen">
-          <button
-            type="button"
-            className="btn btn-secondary mapbox-close-button m-2"
-            onClick={() => toggleMapBox()}
-          >
-            🌎 Close Map
-          </button>
-          <div className="col mapbox-legend-panel">
-            <div className="row">
-              <div className="mapbox_legend_color green"></div>
-              <div className="mapbox-legend-name">Visa Free</div>
-            </div>
-            <div className="row">
-              <div className="mapbox_legend_color blue"></div>
-              <div className="mapbox-legend-name">Visa on Arrival / eVisa</div>
-            </div>
-            <div className="row">
-              <div className="mapbox_legend_color gold"></div>
-              <div className="mapbox-legend-name">eTA</div>
-            </div>
-            <div className="row">
-              <div className="mapbox_legend_color yellow"></div>
-              <div className="mapbox-legend-name">eVisa</div>
-            </div>
+      <div
+        ref={mapBoxContainer}
+        className={`mapbox-fullscreen ${mapboxshowhide}`}
+      >
+        <button
+          type="button"
+          className="btn btn-secondary mapbox-close-button m-2"
+          onClick={() => toggleMapBox("mapbox-hide")}
+        >
+          🌎 Close Map
+        </button>
+        <div className="col mapbox-legend-panel">
+          <div className="row">
+            <div className="mapbox_legend_color green"></div>
+            <div className="mapbox-legend-name">Visa Free</div>
+          </div>
+          <div className="row">
+            <div className="mapbox_legend_color blue"></div>
+            <div className="mapbox-legend-name">Visa on Arrival / eVisa</div>
+          </div>
+          <div className="row">
+            <div className="mapbox_legend_color gold"></div>
+            <div className="mapbox-legend-name">eTA</div>
+          </div>
+          <div className="row">
+            <div className="mapbox_legend_color yellow"></div>
+            <div className="mapbox-legend-name">eVisa</div>
           </div>
         </div>
-        {paintMapBox()}
-      </Collapse>
+      </div>
+      {paintMapBox()}
     </div>
   );
 };

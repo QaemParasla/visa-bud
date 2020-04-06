@@ -94,7 +94,7 @@ function Filter() {
             >
               🛂 eTA
             </button>
-            <div className="ml-2 mt-2 pt-2">Travel Preferences</div>
+            <div className="filter-options-label"> Travel Preferences </div>
             <button type="button" className={`btn btn-outline-dark ml-2 mt-2`}>
               💬 English Speaking
             </button>
@@ -102,11 +102,14 @@ function Filter() {
               👮 ‍Safe
             </button>
           </div>
-          <div className="close-filterpanel-button">
-            <button type="button" className="btn btn-secondary">
-              Close Button
-            </button>
-          </div>
+
+          <button
+            type="button"
+            className="btn btn-secondary close-filterpanel-button"
+            id="toggler"
+          >
+            Close
+          </button>
         </div>
       </UncontrolledCollapse>
       {/* </>
