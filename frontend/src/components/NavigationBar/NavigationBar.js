@@ -25,10 +25,7 @@ const NavigationBar = props => {
               <NavLink href="/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/blog">Blog</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/contacts">contacts</NavLink>
+              <NavLink href="https://github.com/QaemParasla/visa-bud/">Github Source Code</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
