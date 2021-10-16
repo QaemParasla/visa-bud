@@ -8,7 +8,7 @@ const Footer = props => {
       {console.log("Rendering Footer")}
       <footer class="footer fixed-bottom">
         <div class="container text-white text-center">
-          <small> Visa Bug </small>
+          <small> Visa Bud - Qaem Parasla </small>
         </div>
       </footer>
     </>
